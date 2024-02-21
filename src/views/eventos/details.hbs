@@ -1,0 +1,72 @@
+<div class="container">
+    <br>
+    <h1>{{evento.nombre}}</h1>
+    <p><span style="font-style: italic;">Lugar: {{evento.lugar}}</span></p>
+    <p><span style="font-style: italic;">Hora Evento: {{evento.horaInicio}} - {{evento.horaFinal}}</span></p>
+    <p><span style="font-style: italic;">Precio: L {{evento.precio}}</span></p>
+
+    <hr>
+    <div class=" col-md-12">
+        <div class="row g-3 needs-validation">
+            <div class="col-md-8">
+                <a class="btn btn-success" href="/eventos/eventosAdmin" title="Volver">
+                    <i class="fa fa-arrow-circle-left " style="color: #ffffff;"> Volver</i></a>
+                <a class="btn btn-success" href="/eventos/detalles/add/{{evento.id}}" title="Crear">
+                    <i class="fa fa-plus">Agregar charla</i></a>&nbsp;&nbsp;
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-primary  table-hover table-hovertable-striped table-class table-bordered border-light"
+            id="table-id">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Código</th>
+                    <th>Tema</th>
+                    <th>Expositor</th>
+                    <th>Hora Inicio</th>
+                    <th>Hora Final</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each eventoDetalles}}
+                <tr>
+                    <td>{{codigo}}</td>
+
+                    <td>{{tema}}</td>
+
+                    <td>{{expositor}}</td>
+
+                    <td>{{horaInicio}}</td>
+
+                    <td>{{horaFinal}}</td>
+
+                    <td>
+                        <a href="/eventos/edit/{{id}}" title="Editar"> <i class="fas fa-pencil-alt" title="Editar"
+                                style="color: #0A1251;" aria-hidden="true"></i></a>
+                    </td>
+                    <td>
+                        <a onclick="document.getElementById('{{id}}').style.display='block'" title="Eliminar">
+                            <i class="fas fa-trash-alt" title="Eliminar" style="color: #f80000;  "
+                                aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                {{else}}
+                <th></th>
+                <th>Aún no se han agregado datos.</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

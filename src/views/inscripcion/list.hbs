@@ -1,0 +1,695 @@
+
+{{#if medicos}}
+
+<br>
+<div class="container">
+    <div class="row g-3 needs-validation">
+        <div class="box">
+
+            <br>
+            <div class="card-body col-md-12">
+                <h2 style="color: rgb(0, 0, 0);">Inscripción</h2>
+                <hr>
+
+                <form action="/inscripcion/add" method="POST">
+
+                    <h5 class="h5-responsive">Modalidad</h5>
+                    <!-- Basic textbox -->
+                    <div>
+                        <input type="radio" class="btn-check" name="modalidad" id="success-outlined" value="Presencial"
+                            autocomplete="off" onchange="cambiarsubtotal({{PrecioMedicoCongresoPresencial.precio}})">
+
+                        <label class="btn btn-outline-primary " for="success-outlined">Presencial L
+                            {{PrecioMedicoCongresoPresencial.precio}}</label>
+                        <input type="radio" class="btn-check myclassvirtual" name="modalidad" id="danger-outlined" value="Virtual"
+                            autocomplete="off" onchange="cambiarsubtotal({{PrecioMedicoCongresoVirtual.precio}})">
+                        <label class="btn btn-outline-primary" for="danger-outlined">Virtual L 
+                            {{PrecioMedicoCongresoVirtual.precio}}</label>
+                        <br><br>
+                        <p>* Recuerda que los pre congresos son solo en modalidad presencial.</p>
+                    </div>
+                    <!-- /.Basic textbox -->
+
+                    <h5 class="h5-responsive">Congreso</h5>
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input congresonacional" type="checkbox" value="{{congresoM.id}}" name="eventoId"
+                                id="flexCheckDefault" >
+
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{congresoM.nombre}}
+                            </label>
+                        </div>
+
+                        <input type="text" name="PrecioMedicoCongresoPresencial" id=""
+                            value="{{PrecioMedicoCongresoPresencial.precio}}" hidden>
+                        <input type="text" name="PrecioMedicoCongresoVirtual" id=""
+                            value="{{PrecioMedicoCongresoVirtual.precio}}" hidden>
+                        <input type="text" name="PrecioMedicoPreCongreso" id=""
+                            value="{{PrecioMedicoPreCongreso.precio}}" hidden>
+                        <br>
+                        <h5 class="h5-responsive">Pre Congresos</h5>
+                        {{#each precongresos }}
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input myclass" type="radio" name="eventoId" id="micaja" value="{{id}}"
+                                value="option1" onchange="cambiartotal({{../PrecioMedicoPreCongreso.precio}})">
+                            <label class="form-check-label" for="inlineRadio4">{{nombre}}
+                                ({{../PrecioMedicoPreCongreso.precio}})</label>
+                        </div>
+                        <br>
+                        {{/each}}
+
+                         <div class="form-check form-check-inline">
+                            <input class="form-check-input ningunabox" type="radio" name="eventoId" id="micaja" 
+                                value="0" onchange="cambiartotal(0)" >
+                            <label class="form-check-label" for="inlineRadio4">Ninguna opción</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!--Email validation-->
+                    <h5 class="h5-responsive">Cuotas de pago</h5>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cuotasPago" id="inlineRadio1" value="1">
+                            <label class="form-check-label" for="inlineRadio1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cuotasPago" id="inlineRadio2" value="2">
+                            <label class="form-check-label" for="inlineRadio2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cuotasPago" id="inlineRadio3" value="3">
+                            <label class="form-check-label" for="inlineRadio3">3</label>
+                        </div>
+                        <br>
+                        <br>
+
+                        <p>* Tienes la posibilidad de seleccionar en cuantas cuotas realizarás el pago.<br>
+                        Recuerda que debes subir tus comprobantes de pago.</p>
+                    </div>
+
+                    <!--Textarea with icon-->
+                    <h5 class="h5-responsive">Totales</h5>
+                    <div>
+                        <div class="row clearfix" style="margin-top:20px">
+                            <div class="pull-right col-md-8">
+                                <table class="table  table-hover" id="tab_logic_total">
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-center">Modalidad</th>
+                                            <th></th>
+                                            <td class="text-center"><input type="text"  name='sub_total'
+                                                    placeholder='0.00' class="form-control" id="sub_total" readonly />
+                                            </td>
+
+
+                                        </tr>
+<tr>
+                                        <th class="text-center">Pre-congreso</th>
+                                        <th></th>
+                                        <td class="text-center"><input type="text"  name='subtotalprecongreso'
+                                                placeholder='0.00' class="form-control" id="subtotalprecongreso"
+                                                readonly />
+                                        </td>
+</tr>
+                                        <th class="text-center">Total</th>
+                                        <th></th>
+                                        <td class="text-center">
+                                            <input type="text"  name='total' placeholder='0.00'
+                                                class="form-control" id="total" readonly />
+                                        </td>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card-footer bg-transparent " class="observaciones"> <button class="btn btn-success ">
+                            Guardar
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<br>
+
+<script>
+    /*   $("input").change(function(){
+   var getSelectedValue = document.querySelector( 'input[name="eventoId"]:checked');
+   if(getSelectedValue != null) {
+       document.getElementById("total").value = "500";
+        $('input[name="congreso"]').removeAttr('checked')
+   
+    }else {
+    }
+   });*/
+    function cambiartotal(precio) {
+        document.getElementById("subtotalprecongreso").value = precio;
+        var getSelectedValue = document.querySelector('input[name="modalidad"]:checked');
+        if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(precio) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = precio;
+        }
+    };
+
+    //BUENA ANTERIOR
+/*    function cambiarsubtotal(precio) {
+        document.getElementById("sub_total").value = precio;
+        var getSelectedValue = document.querySelector('input[name="eventoId"]:checked');
+  if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(document.getElementById("subtotalprecongreso").value) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = parseInt(document.getElementById("sub_total").value);
+        }
+    };*/
+    
+/* function cambiartotal(precio) {
+        document.getElementById("subtotalprecongreso").value = precio;
+        var getSelectedValue = document.querySelector('input[name="modalidad"]:checked');
+        if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(precio) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = precio;
+        }
+    };
+    */
+    function cambiarsubtotal(precio) {
+        document.getElementById("sub_total").value = precio;
+        var getSelectedValue = document.querySelector('input[name="eventoId"]:checked');
+        var mvirtual = document.querySelector('input[name="modalidad"]:checked');
+   if (mvirtual.value == 'Virtual') {
+    //FOR
+    var boxes = document.getElementsByClassName("myclass");    
+    var radioNinguna = document.getElementsByClassName("ningunabox");
+        var congresonacional = document.getElementsByClassName("congresonacional");
+
+
+    for(i = 0; i < boxes.length; i++)
+    {
+        boxes[i].disabled = true;
+          
+
+        //document.getElementsByClassName("myclass").disabled=true;
+    }
+
+    radioNinguna[0].checked  = true;
+
+    congresonacional[0].checked  = true;
+        document.getElementById("subtotalprecongreso").value = 0;
+
+
+    
+
+
+    document.getElementById("total").value = parseInt(document.getElementById("subtotalprecongreso").value) + parseInt(document.getElementById("sub_total").value);
+    } else {
+    var boxes = document.getElementsByClassName("myclass");
+     var congresonacional = document.getElementsByClassName("congresonacional");
+    congresonacional[0].checked  = true;
+
+    for(i = 0; i < boxes.length; i++)
+    {
+        boxes[i].disabled = false;
+        //document.getElementsByClassName("myclass").disabled=true;
+    }
+  if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(document.getElementById("subtotalprecongreso").value) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = parseInt(document.getElementById("sub_total").value);
+        }
+        }
+    };
+</script>
+
+{{/if}}
+
+
+
+{{#if Nomedicos}}
+
+<br>
+<div class="container">
+    <div class="row g-3 needs-validation">
+        <div class="box">
+
+            <br>
+            <div class="card-body col-md-12">
+                <h2 style="color: rgb(0, 0, 0);">Inscripción</h2>
+                <hr>
+
+                <form action="/inscripcion/add" method="POST">
+
+                    <h5 class="h5-responsive">Modalidad</h5>
+                    <!-- Basic textbox -->
+                    <div>
+                        <input type="radio" class="btn-check" name="modalidad" id="success-outlined" value="Presencial"
+                            autocomplete="off" onchange="cambiarsubtotal({{PrecioNoMedicoCongresoPresencial.precio}})">
+
+                        <label class="btn btn-outline-primary" for="success-outlined">Presencial L
+                            {{PrecioNoMedicoCongresoPresencial.precio}}</label>
+                        <input type="radio" class="btn-check myclassvirtual" name="modalidad" id="danger-outlined" value="Virtual"
+                            autocomplete="off" onchange="cambiarsubtotal({{PrecioNoMedicoCongresoVirtual.precio}})">
+                        <label class="btn btn-outline-primary" for="danger-outlined">Virtual L 
+                            {{PrecioNoMedicoCongresoVirtual.precio}}</label>
+                        <br><br>
+                        <p>* Recuerda que los pre congresos son solo en modalidad presencial.</p>
+                    </div>
+                    <!-- /.Basic textbox -->
+
+                    <h5 class="h5-responsive">Congreso</h5>
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input congresonacional" type="checkbox" value="{{congresoM.id}}" name="eventoId"
+                                id="flexCheckDefault" >
+
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{congresoM.nombre}}
+                            </label>
+                        </div>
+
+                        <input type="text" name="PrecioMedicoCongresoPresencial" id=""
+                            value="{{PrecioNoMedicoCongresoPresencial.precio}}" hidden>
+                        <input type="text" name="PrecioMedicoCongresoVirtual" id=""
+                            value="{{PrecioNoMedicoCongresoVirtual.precio}}" hidden>
+                        <input type="text" name="PrecioMedicoPreCongreso" id=""
+                            value="{{PrecioNoMedicoPreCongreso.precio}}" hidden>
+                        <br>
+
+                        <h5 class="h5-responsive">Pre Congresos</h5>
+                        {{#each precongresos }}
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input myclass" type="radio" name="eventoId" id="micaja" value="{{id}}"
+                                value="option1" onchange="cambiartotal({{../PrecioNoMedicoPreCongreso.precio}})">
+                            <label class="form-check-label" for="inlineRadio4">{{nombre}}
+                                ({{../PrecioNoMedicoPreCongreso.precio}})</label>
+                        </div>
+                        <br>
+                        {{/each}}
+
+                         <div class="form-check form-check-inline">
+                            <input class="form-check-input ningunabox" type="radio" name="eventoId" id="micaja" 
+                                value="0" onchange="cambiartotal(0)" >
+                            <label class="form-check-label" for="inlineRadio4">Ninguna opción.</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!--Email validation-->
+                    <h5 class="h5-responsive">Cuotas de pago</h5>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cuotasPago" id="inlineRadio1" value="1">
+                            <label class="form-check-label" for="inlineRadio1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cuotasPago" id="inlineRadio2" value="2">
+                            <label class="form-check-label" for="inlineRadio2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cuotasPago" id="inlineRadio3" value="3">
+                            <label class="form-check-label" for="inlineRadio3">3</label>
+                        </div>
+                        <br>
+
+                        <p>* Tienes la posibilidad de seleccionar en cuantas cuotas realizarás el pago.<br>
+                        Recuerda que debes subir tus comprobantes de pago.</p>
+                    </div>
+
+                    <!--Textarea with icon-->
+                    <h5 class="h5-responsive">Totales</h5>
+                    <div>
+                        <div class="row clearfix" style="margin-top:20px">
+                            <div class="pull-right col-md-8">
+                                <table class="table  table-hover" id="tab_logic_total">
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-center">Modalidad</th>
+                                            <th></th>
+                                            <td class="text-center"><input type="text"  name='sub_total'
+                                                    placeholder='0.00' class="form-control" id="sub_total" readonly />
+                                            </td>
+
+
+                                        </tr>
+<tr>
+                                        <th class="text-center">Pre-congreso</th>
+                                        <th></th>
+                                        <td class="text-center"><input type="text"  name='subtotalprecongreso'
+                                                placeholder='0.00' class="form-control" id="subtotalprecongreso"
+                                                readonly />
+                                        </td>
+</tr>
+                                        <th class="text-center">Total</th>
+                                        <th></th>
+                                        <td class="text-center">
+                                            <input type="text"  name='total' placeholder='0.00'
+                                                class="form-control" id="total" readonly />
+                                        </td>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card-footer bg-transparent " class="observaciones"> <button class="btn btn-success ">
+                            Guardar
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<br>
+
+<script>
+    /*   $("input").change(function(){
+   var getSelectedValue = document.querySelector( 'input[name="eventoId"]:checked');
+   if(getSelectedValue != null) {
+       document.getElementById("total").value = "500";
+        $('input[name="congreso"]').removeAttr('checked')
+   
+    }else {
+    }
+   });*/
+    function cambiartotal(precio) {
+        document.getElementById("subtotalprecongreso").value = precio;
+        var getSelectedValue = document.querySelector('input[name="modalidad"]:checked');
+        if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(precio) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = precio;
+        }
+    };
+
+    //BUENA ANTERIOR
+/*    function cambiarsubtotal(precio) {
+        document.getElementById("sub_total").value = precio;
+        var getSelectedValue = document.querySelector('input[name="eventoId"]:checked');
+  if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(document.getElementById("subtotalprecongreso").value) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = parseInt(document.getElementById("sub_total").value);
+        }
+    };*/
+    
+/* function cambiartotal(precio) {
+        document.getElementById("subtotalprecongreso").value = precio;
+        var getSelectedValue = document.querySelector('input[name="modalidad"]:checked');
+        if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(precio) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = precio;
+        }
+    };
+    */
+    function cambiarsubtotal(precio) {
+        document.getElementById("sub_total").value = precio;
+        var getSelectedValue = document.querySelector('input[name="eventoId"]:checked');
+        var mvirtual = document.querySelector('input[name="modalidad"]:checked');
+   if (mvirtual.value == 'Virtual') {
+    //FOR
+    var boxes = document.getElementsByClassName("myclass");    
+    var radioNinguna = document.getElementsByClassName("ningunabox");
+        var congresonacional = document.getElementsByClassName("congresonacional");
+
+
+    for(i = 0; i < boxes.length; i++)
+    {
+        boxes[i].disabled = true;
+          
+
+        //document.getElementsByClassName("myclass").disabled=true;
+    }
+
+    radioNinguna[0].checked  = true;
+
+    congresonacional[0].checked  = true;
+        document.getElementById("subtotalprecongreso").value = 0;
+
+
+    
+
+
+    document.getElementById("total").value = parseInt(document.getElementById("subtotalprecongreso").value) + parseInt(document.getElementById("sub_total").value);
+    } else {
+    var boxes = document.getElementsByClassName("myclass");
+     var congresonacional = document.getElementsByClassName("congresonacional");
+    congresonacional[0].checked  = true;
+
+    for(i = 0; i < boxes.length; i++)
+    {
+        boxes[i].disabled = false;
+        //document.getElementsByClassName("myclass").disabled=true;
+    }
+  if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(document.getElementById("subtotalprecongreso").value) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = parseInt(document.getElementById("sub_total").value);
+        }
+        }
+    };
+</script>
+
+{{/if}}
+
+
+{{#if jubilados}}
+
+<br>
+<div class="container">
+    <div class="row g-3 needs-validation">
+        <div class="box">
+
+            <br>
+            <div class="card-body col-md-12">
+                <h2 style="color: rgb(0, 0, 0);">Inscripción</h2>
+                <hr>
+
+                <form action="/inscripcion/add" method="POST">
+
+                    <h5 class="h5-responsive">Modalidad</h5>
+                    <!-- Basic textbox -->
+                    <div>
+                        <input type="radio" class="btn-check" name="modalidad" id="success-outlined" value="Presencial"
+                            autocomplete="off" onchange="cambiarsubtotal({{PrecioJubilados}})">
+
+                        <label class="btn btn-outline-primary" for="success-outlined">Presencial 
+                         </label>
+                        <input type="radio" class="btn-check" name="modalidad" id="danger-outlined" value="Virtual"
+                            autocomplete="off" onchange="cambiarsubtotal({{PrecioJubilados}})">
+                        <label class="btn btn-outline-primary" for="danger-outlined">Virtual</label>
+                        <br><br>
+                        <p>* Recuerda que los pre congresos son solo en modalidad presencial.</p>
+                    </div>
+                    <!-- /.Basic textbox -->
+
+                    <h5 class="h5-responsive">Congreso</h5>
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input congresonacional" type="checkbox" value="{{congresoM.id}}" name="eventoId"
+                                id="flexCheckDefault" >
+
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{congresoM.nombre}}
+                            </label>
+                        </div>
+
+                        <input type="text" name="PrecioMedicoCongresoPresencial" id=""
+                            value="{{PrecioJubilados}}" hidden>
+                        <input type="text" name="PrecioMedicoCongresoVirtual" id=""
+                            value="{{PrecioJubilados}}" hidden>
+                        <input type="text" name="PrecioMedicoPreCongreso" id=""
+                            value="{{PrecioJubilados}}" hidden>
+                        <br>
+
+                        <h5 class="h5-responsive">Pre Congresos</h5>
+                        {{#each precongresos }}
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input myclass" type="radio" name="eventoId" id="micaja" value="{{id}}"
+                                value="option1" onchange="cambiartotal({{../PrecioJubilados}})">
+                            <label class="form-check-label" for="inlineRadio4">{{nombre}}
+                                ({{../PrecioJubilados}})</label>
+                        </div>
+                        <br>
+                        {{/each}}
+
+                         <div class="form-check form-check-inline">
+                            <input class="form-check-input ningunabox" type="radio" name="eventoId" id="micaja" 
+                                value="0" onchange="cambiartotal(0)" >
+                            <label class="form-check-label" for="inlineRadio4">Ninguna opción.</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!--Email validation-->
+                    <h5 class="h5-responsive">Cuotas de pago</h5>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cuotasPago" id="inlineRadio1" value="1">
+                            <label class="form-check-label" for="inlineRadio1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cuotasPago" id="inlineRadio2" value="2">
+                            <label class="form-check-label" for="inlineRadio2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cuotasPago" id="inlineRadio3" value="3">
+                            <label class="form-check-label" for="inlineRadio3">3</label>
+                        </div>
+                        <br>
+
+                        <p>* Tienes la posibilidad de seleccionar en cuantas cuotas realizarás el pago.<br>
+                        Recuerda que debes subir tus comprobantes de pago.</p>
+                    </div>
+
+                    <!--Textarea with icon-->
+                    <h5 class="h5-responsive">Totales</h5>
+                    <div>
+                        <div class="row clearfix" style="margin-top:20px">
+                            <div class="pull-right col-md-8">
+                                <table class="table  table-hover" id="tab_logic_total">
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-center">Modalidad</th>
+                                            <th></th>
+                                            <td class="text-center"><input type="text"  name='sub_total'
+                                                    placeholder='0.00' class="form-control" id="sub_total" readonly />
+                                            </td>
+
+
+                                        </tr>
+<tr>
+                                        <th class="text-center">Pre-congreso</th>
+                                        <th></th>
+                                        <td class="text-center"><input type="text"  name='subtotalprecongreso'
+                                                placeholder='0.00' class="form-control" id="subtotalprecongreso"
+                                                readonly />
+                                        </td>
+</tr>
+                                        <th class="text-center">Total</th>
+                                        <th></th>
+                                        <td class="text-center">
+                                            <input type="text"  name='total' placeholder='0.00'
+                                                class="form-control" id="total" readonly />
+                                        </td>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card-footer bg-transparent " class="observaciones"> <button class="btn btn-success ">
+                            Guardar
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<br>
+
+<script>
+    /*   $("input").change(function(){
+   var getSelectedValue = document.querySelector( 'input[name="eventoId"]:checked');
+   if(getSelectedValue != null) {
+       document.getElementById("total").value = "500";
+        $('input[name="congreso"]').removeAttr('checked')
+   
+    }else {
+    }
+   });*/
+    function cambiartotal(precio) {
+        document.getElementById("subtotalprecongreso").value = precio;
+        var getSelectedValue = document.querySelector('input[name="modalidad"]:checked');
+        if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(precio) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = precio;
+        }
+    };
+
+    //BUENA ANTERIOR
+/*    function cambiarsubtotal(precio) {
+        document.getElementById("sub_total").value = precio;
+        var getSelectedValue = document.querySelector('input[name="eventoId"]:checked');
+  if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(document.getElementById("subtotalprecongreso").value) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = parseInt(document.getElementById("sub_total").value);
+        }
+    };*/
+    
+/* function cambiartotal(precio) {
+        document.getElementById("subtotalprecongreso").value = precio;
+        var getSelectedValue = document.querySelector('input[name="modalidad"]:checked');
+        if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(precio) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = precio;
+        }
+    };
+    */
+    function cambiarsubtotal(precio) {
+        document.getElementById("sub_total").value = precio;
+        var getSelectedValue = document.querySelector('input[name="eventoId"]:checked');
+        var mvirtual = document.querySelector('input[name="modalidad"]:checked');
+   if (mvirtual.value == 'Virtual') {
+    //FOR
+    var boxes = document.getElementsByClassName("myclass");    
+    var radioNinguna = document.getElementsByClassName("ningunabox");
+        var congresonacional = document.getElementsByClassName("congresonacional");
+
+
+    for(i = 0; i < boxes.length; i++)
+    {
+        boxes[i].disabled = true;
+          
+
+        //document.getElementsByClassName("myclass").disabled=true;
+    }
+
+    radioNinguna[0].checked  = true;
+
+    congresonacional[0].checked  = true;
+        document.getElementById("subtotalprecongreso").value = 0;
+
+
+    
+
+
+    document.getElementById("total").value = parseInt(document.getElementById("subtotalprecongreso").value) + parseInt(document.getElementById("sub_total").value);
+    } else {
+    var boxes = document.getElementsByClassName("myclass");
+     var congresonacional = document.getElementsByClassName("congresonacional");
+    congresonacional[0].checked  = true;
+
+    for(i = 0; i < boxes.length; i++)
+    {
+        boxes[i].disabled = false;
+        //document.getElementsByClassName("myclass").disabled=true;
+    }
+  if (getSelectedValue != null) {
+            document.getElementById("total").value = parseInt(document.getElementById("subtotalprecongreso").value) + parseInt(document.getElementById("sub_total").value);
+        } else {
+            document.getElementById("total").value = parseInt(document.getElementById("sub_total").value);
+        }
+        }
+    };
+</script>
+
+{{/if}}

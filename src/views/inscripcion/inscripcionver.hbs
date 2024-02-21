@@ -1,0 +1,162 @@
+<body>
+    <!-- partial:index.partial.html -->
+    <!-- TAB CONTROLLERS -->
+    <input id="panel-1-ctrl" class="panel-radios" type="radio" name="tab-radios" checked hidden>
+    <input id="panel-2-ctrl" class="panel-radios" type="radio" name="tab-radios" hidden>
+    <input id="panel-3-ctrl" class="panel-radios" type="radio" name="tab-radios" hidden>
+    <input id="panel-4-ctrl" class="panel-radios" type="radio" name="tab-radios" hidden>
+    <input id="panel-5-ctrl" class="panel-radios" type="radio" name="tab-radios" hidden>
+    <input id="nav-ctrl" class="panel-radios" type="checkbox" name="nav-checkbox" hidden>
+
+    <header id="introduction" style="font-size: 250%;">
+        <h1>Inscripción de, {{inscripcion.nombres}} {{inscripcion.apellidos}}.</h1>
+    </header>
+
+    <!-- TABS LIST -->
+    <ul id="tabs-list">
+        <!-- MENU TOGGLE -->
+        <label id="open-nav-label" for="nav-ctrl"></label>
+        <li id="li-for-panel-1">
+            <label class="panel-label" for="panel-1-ctrl">Inscripción </label>
+        </li><!--INLINE-BLOCK FIX
+ -->
+        <li id="li-for-panel-2">
+            <label class="panel-label" for="panel-2-ctrl">Comprobantes de pago</label>
+        </li><!--INLINE-BLOCK FIX
+
+    </li><!--INLINE-BLOCK FIX
+ -->
+
+        <label id="close-nav-label" for="nav-ctrl">Close</label>
+    </ul>
+    <!-- THE PANELS -->
+    <article id="panels">
+        <div class="container">
+            <section id="panel-1">
+                <main>
+                    <div class="box">
+                        <div class="row g-3 needs-validation">
+                            <div class="col-md-12">
+                                <h5 class="card-title"> Correo: {{inscripcion.usuario}}</h5>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row g-3 needs-validation">
+                            <div class="col-md-4">
+                                <h5 class="card-title"> Nombre: {{inscripcion.nombres}} {{inscripcion.apellidos}}</h5>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <h5 class="card-title"> Cuotas de Pago: {{inscripcion.cuotasPago}}</h5>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <h5 class="card-title"> Modalidad: {{inscripcion.modalidad}}</h5>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row g-3 needs-validation">
+                            <div class="col-md-4">
+                                <h5 class="card-title"> Total a pagar : {{inscripcion.total}}</h5>
+                            </div>
+
+                            {{#if inscripcion.confirmacionEntrada}}
+                            <div class="form-group col-md-4">
+                                <h5 class="card-title"> Usuario Validado: {{inscripcion.confirmacionEntrada}}</h5>
+                            </div>
+                            {{else}}
+
+                            <div class="form-group col-md-4">
+                                <a href="/inscripcion/edit/inscripcion/{{inscripcion.usuario}}"
+                                    class="btn btn-success"><i class="fas fa-check-square" title="Validar inscripcion"
+                                        style="color: #ffffff;  " aria-hidden="true"></i> Validar inscripción </a>
+
+                            </div>
+
+                            {{/if}}
+
+                        </div>
+
+                        <br><br>
+                        <div class="table-responsive">
+                            <table
+                                class="table  table-hover table-hovertable-striped table-class  table-bordered border-light  "
+                                id="table-id">
+
+                                <thead>
+                                    <tr>
+                                        <th>Congreso</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each inscripciondetalle }}
+                                    <tr>
+                                        <td>{{nombre}}</td>
+
+                                    </tr>
+                                    {{else}}
+                                    <th></th>
+
+                                    {{/each}}
+                                </tbody>
+
+                            </table>
+                        </div>
+
+
+
+
+                    </div>
+
+                </main>
+            </section>
+            {{!-- PANEL ACTUALIZAR DATO --}}
+            <section id="panel-2">
+                <main>
+                    <div class="box">
+                        <div class="accordion" id="accordionExample">
+                            {{#if cuotasimagen}}
+                            {{#each cuotasimagen }}
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Comprobante #{{numeroComprobante}}
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a href="/comprobantes/{{archivo}}" target="_blank"><img
+                                                src="/comprobantes/{{archivo}}" class="rounded mx-auto d-block"
+                                                style=" width: 40%; height: 40%; " target="_blank"
+                                                alt="No hay imagen,por favor agregue una."></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{/each}}
+                            {{else}}
+
+                            <h5>EL usuario no tiene comprobantes de pago registrados.</h5>
+
+                            {{/if}}
+
+                        </div>
+
+                    </div>
+
+
+
+                </main>
+            </section>
+
+           
+        </div>
+    </article>
+    <!-- partial -->
+
+</body>

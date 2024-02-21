@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row g-3 needs-validation">
+        <div class="col-md-8 mx-auto" style="width: 500%; ">
+            <div class="box">
+                <div class="card-header  border-success">
+                    <div class="row g-3 needs-validation">
+                        <div class="col-md-2">
+                            <a href="/hoteles/hotelesAdmin"><i class="fas fa-arrow-circle-left fa-2x"
+                                    style="color: #ffffff;"></i></a>
+                        </div>
+                        <div class="text-center col-md-8">
+                            <h2 style="color: aliceblue;">Hoteles</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body col-md-12">
+                    <form action="/hoteles/add" method="POST" enctype="multipart/form-data">
+                        <head>
+                            <meta charset="utf-8">
+                            <link rel="license" href="https://www.opensource.org/licenses/mit-license/">
+                        </head>
+                        <body>
+                            <div class="row g-3 needs-validation">
+
+                                <div class="form-group col-md-12">
+                                    <div class="inputBox">
+                                        <input type="text" id="" name="nombre" required>
+                                        <label for="">Nombre del hotel</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row g-3 needs-validation">
+                                <div class="form-group col-md-6">
+                                    <div class="inputBox">
+                                        <input type="text" name="email" required>
+                                        <label for="">Correo</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="inputBox">
+                                        <input type="number" name="phone" required>
+                                        <label for="">Telefono</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3 needs-validation">
+                                <div class="form-group col-md-12">
+                                    <div class="inputBox">
+                                        <input type="text" id="" name="direccion" required>
+                                        <label for="">Direccion</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row g-3 needs-validation">
+                                <div class="form-group col-md-12">
+                                    <div class="inputBox">
+                                        <input type="text" id="" name="ubicacion" required>
+                                        <label for="">Ubicacion </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row g-3 needs-validation">
+                                <div class="form-group col-md-12">
+                                    <div class="inputBox">
+                                        <input type="text" id="" name="descripcion" required>
+                                        <label for="">Descripcion</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                             <div class="row g-3 needs-validation">
+                                <div class="form-group col-md-12">
+                                    <div class="inputBox">
+                                        <input type="text" id="" name="informacion" required>
+                                        <label for="">Enlace de informació</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="validationServer03">Seleccione un imagen</label>
+                                <input type="file" class="form-control" name="archivo" id="archivo">
+                            </div>
+                            <br>
+                           
+                            <div class="card-footer bg-transparent " class="observaciones"> <button
+                                    class="btn btn-success ">
+                                    Guardar
+                                </button>
+                            </div>
+                    </form>
+
+
+                    {{!-- BOTON DE AGREGAR --}}

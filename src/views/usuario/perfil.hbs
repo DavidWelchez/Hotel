@@ -1,0 +1,190 @@
+
+<body>  
+<!-- partial:index.partial.html -->
+<!-- TAB CONTROLLERS -->
+<input id="panel-1-ctrl"
+       class="panel-radios" type="radio" name="tab-radios" checked hidden>
+<input id="panel-2-ctrl"
+       class="panel-radios" type="radio" name="tab-radios"hidden>
+<input id="panel-3-ctrl"
+       class="panel-radios" type="radio" name="tab-radios"hidden>
+<input id="panel-4-ctrl"
+       class="panel-radios" type="radio" name="tab-radios"hidden>
+<input id="panel-5-ctrl"
+       class="panel-radios" type="radio" name="tab-radios"hidden>
+<input id="nav-ctrl"
+       class="panel-radios" type="checkbox" name="nav-checkbox"hidden>
+
+<header id="introduction" style="font-size: 250%;">
+  <h1>Bienvenido a tu perfil, {{perfilusuario.nombres}}.</h1>
+</header>
+
+<!-- TABS LIST -->
+<ul id="tabs-list">
+    <!-- MENU TOGGLE -->
+    <label id="open-nav-label" for="nav-ctrl"></label>
+    <li id="li-for-panel-1">
+      <label class="panel-label"
+             for="panel-1-ctrl">Perfil </label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-panel-2">
+      <label class="panel-label"
+             for="panel-2-ctrl">Actualizar datos</label>
+    </li><!--INLINE-BLOCK FIX
+
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-panel-3" class="last">
+      <label class="panel-label"
+             for="panel-3-ctrl">Actualizar Contraseña</label>
+    </li>
+    <label id="close-nav-label" for="nav-ctrl">Close</label>
+</ul>
+<!-- THE PANELS -->
+<article id="panels">
+  <div class="container">
+    <section id="panel-1">
+      <main>
+      <div class="wrapper">
+           <div class="profile-card js-profile-card">
+    
+          <div >
+            {{!-- <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1537638518/Ba%C5%9Fl%C4%B1ks%C4%B1z-1.jpg" alt="profile card">  --}}
+     
+  
+          </div>  
+
+           <div style="margin-top: -15%;" >
+  		<div ><!--left col-->
+              
+<br>
+
+     
+      </hr><br> <br><br><br>
+
+       
+          
+        </div><!--/col-3-->
+       
+  
+   
+
+
+
+
+           <div class="profile-card__cnt js-profile-cnt">
+      
+
+            <div class="profile-card__name">Nombre Completo: {{perfilusuario.nombres}}</div>
+            <div class="profile-card__name">Nombre de usuario: {{perfilusuario.username}}</div>
+            <div class="profile-card__name">email: {{perfilusuario.email}}</div>
+ 
+
+    </div>
+
+  </div>
+
+</div>
+<script>
+  var messageBox = document.querySelector('.js-message');
+  var btn = document.querySelector('.js-message-btn');
+  var card = document.querySelector('.js-profile-card');
+  var closeBtn = document.querySelectorAll('.js-message-close');
+
+  btn.addEventListener('click',function (e) {
+      e.preventDefault();
+      card.classList.add('active');
+  });
+
+  closeBtn.forEach(function (element, index) {
+     console.log(element);
+      element.addEventListener('click',function (e) {
+          e.preventDefault();
+          card.classList.remove('active');
+      });
+  });</script>
+      </main>
+    </section>
+    {{!-- PANEL ACTUALIZAR DATO --}}
+    <section id="panel-2">
+      <main >
+        <div class="box">
+	
+		<form action="/usuario/editperfil/{{perfilusuario.id}}" method="post">
+			<div class="inputBox">
+				<input type="text" name="nombres" value="{{perfilusuario.nombres}}" required>
+				<label for="">Nombre </label>
+			</div>
+			<div class="inputBox">
+				<input type="text" name="apellidos" required value="{{perfilusuario.apellidos}}" required   >
+				<label for="">Apellidos</label>
+			</div>
+            				<label for="">Correo electrónico</label>
+      	<div class="inputBox">
+				<input type="email" name="email"  value="{{perfilusuario.email}}" readonly disabled >
+			</div>
+		      <button type="submit" class="btn btn-success">Actualizar</button>
+		</form>
+	</div>
+
+   
+      </main>
+    </section>
+    
+    {{!-- ACTUALIZAR CONTRASEÑA --}}
+    <section id="panel-3">
+      <main>
+        
+           <!-- partial:index.partial.html -->
+<div class="box">
+	
+		<form action="/usuario/editpassperfil/{{perfilusuario.id}}" method="post">
+			<div class="inputBox">
+				<input type="password" name="password" required>
+				<label for="">Contraseña actual</label>
+			</div>
+			<div class="inputBox">
+				<input type="password" name="newpassword" required="">
+				<label for="">Contraseña Nueva</label>
+			</div>
+      			<div class="inputBox">
+				<input type="password" name="confirmpassword" required="">
+				<label for="">Confirme contraseña </label>
+			</div>
+			 <button type="submit" class="btn btn-success">Cambiar contraseña</button>
+		</form>
+	</div>
+     
+      </main>
+    </section>
+     {{!-- <section id="panel-4">
+      <main>
+        <h1>Tab :hover</h1>
+        <p>When designing the <code>:hover</code> and "active" states I had a dilemma.</p>
+<pre>&lt;li id="li-for-panel-1"&gt;
+  &lt;label class="panel-label" for="panel-1-ctrl"&gt;CSS Radio Toggles&lt;/label&gt;
+&lt;/li&gt;</pre>
+        <p>Each tab <code>li</code> has a <code>border-right</code>. But when the additional <code>border-top</code> appears, we dont want the lighter <code>border-right</code> to be shown all the way to the top. The fix for this is to cancel the <code>border-right</code> on both the <code>:hover</code> and "active" state as well as style the <code>li</code>'s next sibling's <code>border-left</code>.</p>
+        <p>To do this, we can use a combination of the siblings after <code>~</code> and sibling next <code>+</code> selectors:</p>
+        <pre><strong>/* remove the right border on "active" state */</strong>
+#panel-1-ctrl:checked ~ #tabs-list #li-for-panel-1 {
+  border-right: none;
+}
+<strong>/* add left to next sibling */</strong>
+#panel-1-ctrl:checked ~ #tabs-list #li-for-panel-1 + li {
+  border-left: 1px solid #dfdfdf;
+}</pre>
+      </main>
+    </section> --}}
+    {{!-- <section id="panel-5">
+      <main>
+        <h1>Menu</h1>
+        <p>On small screens, the tabs fold down into an expandable menu. To trigger the menu, I use a <code>checkbox</code> (note that it appears at the top of the screen on smaller screen sizes). There are two labels that trigger this checkbox. One opens and the other closes the menu. The one that opens is absolutely positioned invisibly over the "active" menu item. The closing label is at the bottom of the open menu.</p>
+        <p>The best way I have found to show and hide content without using absolute positioning is to use a combination of <code>max-height</code> and <code>opacity</code>. When "inactive", the content has a <code>max-height: 0</code> and <code>opacity: 0</code>.</p>
+        <p>It also has a <code>transition: opacity</code> when I don't know the future height (this panel's content for example) and <code>transition: opacity, max-height</code> when I do know the future height (like the menu). When "active", the <code>max-height</code> and <code>opacity</code> get positive values and the content will transition in. I'm sure flexbox could get me around this hack, but this works for now.</p>   
+      </main>
+    </section> --}}
+  </div>
+</article>
+<!-- partial -->
+  
+</body>

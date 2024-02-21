@@ -1,0 +1,92 @@
+<br>
+<div class="container">
+    <div class="row g-3 needs-validation">
+        <div class="col-md-8 mx-auto" style="width: 500%; ">
+            <div class="box">
+                <div class="card-header  border-success">
+                    <div class="row g-3 needs-validation">
+                        <div class="col-md-2">
+                            <a href="/eventos/eventosAdmin"><i class="fas fa-arrow-circle-left fa-2x"
+                                    style="color: #ffffff;"></i></a>
+                        </div>
+                        <div class="text-center col-md-8">
+                            <h2 style="color: aliceblue;">Editar evento</h2>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card-body col-md-12">
+                    <form action="/eventos/edit/{{evento.id}}" method="POST">
+
+                        <head>
+                            <meta charset="utf-8">
+                            <link rel="license" href="https://www.opensource.org/licenses/mit-license/">
+                        </head>
+
+                        <body>
+                            <div class="row g-3 needs-validation">
+                                <div class="form-group col-md-12">
+                                    <div class="inputBox">
+                                        <input type="text" id="" value="{{evento.nombre}}" name="nombre" required>
+                                        <label for="">Nombre del evento</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3 needs-validation">
+                                <div class="form-group col-md-6">
+                                    <div class="inputBox">
+                                        <input type="text" value="{{evento.lugar}}" name="lugar" required>
+                                        <label for="">Lugar</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="inputBox">
+                                        <input type="text" value="{{evento.ubicacionLugar}}" name="ubicacionLugar" required>
+                                        <label for="">Ubicación lugar</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3 needs-validation">
+                                <div class="form-group col-md-3">
+                                    <div class="inputBox">
+                                        <input type="text" id="" value="{{evento.precio}}" name="precio" required>
+                                        <label for="">Precio</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <div class="inputBox">
+                                        <input type="date" id="" value="{{evento.fecha}}" name="fecha" required>
+                                        <label for="">Fecha</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <div class="inputBox">
+                                        <input type="time" id="" value="{{evento.horaInicio}}" name="horaInicio" required>
+                                        <label for="">Hora Inicio</label>
+                                    </div>
+                                </div>
+                                 <div class="form-group col-md-3">
+                                    <div class="inputBox">
+                                        <input type="time" id="" value="{{evento.horaFinal}}" name="horaFinal" required>
+                                        <label for="">Hora Final</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="card-footer bg-transparent " class="observaciones"> 
+                                {{!-- <button class="btn btn-success ">
+                                    Guardar
+                                </button> --}}
+                                <button class="btn btn-success">Editar</button>
+                            </div>
+                    </form>
+                </div>
+
+    <script>
+        function success() {
+            Swal.fire(
+            'Guardado!',
+            'El evento ha sido guardado.',
+            'success').then(window.location = '/eventos/add');
+        }
+    </script>

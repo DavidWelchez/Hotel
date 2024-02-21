@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Lato", sans-serif;
+        }
+
+        body,
+        html {
+            height: 100%;
+            color: rgb(0, 0, 0);
+            line-height: 1.8;
+        }
+
+        /* Create a Parallax Effect */
+        .bgimg-1,
+        .bgimg-2,
+        .bgimg-3 {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* First image (Logo. Full height) */
+        .bgimg-1 {
+            background-image: url('/css/img/catedral.jpg');
+            min-height: 100%;
+        }
+
+        /* Second image (Portfolio) */
+        .bgimg-2 {
+            background-image: url('/css/img/cerrito.jpg');
+            min-height: 400px;
+        }
+
+
+        /* Third image (Contact) */
+        .bgimg-3 {
+            background-image: url('/css/img/catedral2.jpg');
+            min-height: 400px;
+        }
+
+        .w3-wide {
+            letter-spacing: 10px;
+        }
+
+        .w3-hover-opacity {
+            cursor: pointer;
+        }
+
+        /* Turn off parallax scrolling for tablets and phones */
+        @media only screen and (max-device-width: 1600px) {
+
+            .bgimg-1,
+            .bgimg-2,
+            .bgimg-3 {
+                background-attachment: scroll;
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .mySlides {
+            display: none
+        }
+
+        .w3-left,
+        .w3-right,
+        .w3-badge {
+            cursor: pointer
+        }
+
+        .w3-badge {
+            height: 13px;
+            width: 13px;
+            padding: 0
+        }
+    </style>
+
+    <body>
+
+
+
+        <div class="w3-content w3-display-container" style="max-width:800px">
+            <img class="mySlides" src="/css/img/catedral.jpg" style="width:100%">
+            <img class="mySlides" src="/css/img/catedral2.jpg" style="width:100%">
+            <img class="mySlides" src="/css/img/cerrito.jpg" style="width:100%">
+            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"
+                style="width:100%">
+                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+            </div>
+        </div>
+
+        <script>
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+                showDivs(slideIndex += n);
+            }
+
+            function currentDiv(n) {
+                showDivs(slideIndex = n);
+            }
+
+            function showDivs(n) {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("demo");
+                if (n > x.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = x.length }
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" w3-white", "");
+                }
+                x[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " w3-white";
+            }
+        </script>
+
+        <!-- Container (About Section) -->
+        <div class="w3-content w3-container w3-padding-64" id="about">
+            <h3 class="w3-center">COMENAC</h3>
+            <p class="w3-center"><em></em></p>
+            <p style="text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+            <br>
+            <div class=" col-md-12">
+                <div class="row g-3 needs-validation">
+                    <div class="col-md-6">
+                        <iframe width="400" height="315" src="https://www.youtube.com/embed/N_yuPf1ITjE"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="col-md-6">
+                        <p style="text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting
+                            industry. Lorem Ipsum has been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley
+                            of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries,
+                            but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages,
+                            and more recently with desktop publishing software like Aldus PageMaker including versions
+                            of
+                            Lorem Ipsum.</p>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="w3-row w3-center w3-dark-grey w3-padding-16">
+            <div class="w3-quarter w3-section">
+                <span class="w3-xlarge">14+</span><br>
+                Partners
+            </div>
+            <div class="w3-quarter w3-section">
+                <span class="w3-xlarge">55+</span><br>
+                Projects Done
+            </div>
+            <div class="w3-quarter w3-section">
+                <span class="w3-xlarge">89+</span><br>
+                Happy Clients
+            </div>
+            <div class="w3-quarter w3-section">
+                <span class="w3-xlarge">150+</span><br>
+                Meetings
+            </div>
+        </div>
+
+        <!-- Second Parallax Image with Portfolio Text -->
+        <div class="bgimg-2 w3-display-container w3-opacity-min">
+            <div class="w3-display-middle">
+                <span class="w3-xxlarge w3-text-white w3-wide">Galeria</span>
+            </div>
+        </div>
+
+        <!-- Container (Portfolio Section) -->
+        <div class="w3-content w3-container w3-padding-64" id="portfolio">
+            <h3 class="w3-center">Galeria</h3>
+            <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make
+                    them bigger</em></p><br>
+
+            <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+            <div class="w3-row-padding w3-center">
+                <div class="w3-col m3">
+                 <a href=""><img src="DocRomero\HQ5A0360.jpg" style="width:100%    border-radius:260px;
+    border:10px solid #666;" class="w3-hover-opacity img-thumbnail shadow-4-strong" alt="Cinque Terre"></a>
+
+
+                </div>
+
+                <div class="w3-col m3">
+                    <img src="MedicosSRC\4U1A4075.jpg" style="width:100%" onclick="onClick(this)"
+                        class="w3-hover-opacity img-circle img-thumbnail" alt="Coffee beans">
+                </div>
+
+                <div class="w3-col m3">
+                    <a href=""><img src="MedicosSRC\4U1A4075.jpg" style="width:100%" class="rounded-circle img-thumbnail" alt="Cinque Terre"></a>
+                    
+                </div>
+
+                <div class="w3-col m3">
+                    <img src="/css/img/Logo-Comenac-2023-Version-Compacta.png" style="width:100%"
+                        onclick="onClick(this)" class="w3-hover-opacity" alt="Quiet ocean">
+                </div>
+            </div>
+
+            <div class="w3-row-padding w3-center w3-section">
+                <div class="w3-col m3">
+                    <img src="/css/img/Logo-Comenac-2023-Version-Compacta.png" style="width:100%"
+                        onclick="onClick(this)" class="w3-hover-opacity" alt="The mist">
+                </div>
+
+                <div class="w3-col m3">
+                    <img src="/css/img/Logo-Comenac-2023-Version-Compacta.png" style="width:100%"
+                        onclick="onClick(this)" class="w3-hover-opacity" alt="My beloved typewriter">
+                </div>
+
+                <div class="w3-col m3">
+                    <img src="/css/img/Logo-Comenac-2023-Version-Compacta.png" style="width:100%"
+                        onclick="onClick(this)" class="w3-hover-opacity" alt="Empty ghost train">
+                </div>
+
+                <div class="w3-col m3">
+                    <img src="/css/img/Logo-Comenac-2023-Version-Compacta.png" style="width:100%"
+                        onclick="onClick(this)" class="w3-hover-opacity" alt="Sailing">
+                </div>
+                {{!-- <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD
+                    MORE</button> --}}
+            </div>
+        </div>
+
+        <!-- Modal for full size images on click-->
+        <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+            <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i
+                    class="fa fa-remove"></i></span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img id="img01" class="w3-image">
+                <p id="caption" class="w3-opacity w3-large"></p>
+            </div>
+        </div>
+
+        <!-- Third Parallax Image with Portfolio Text -->
+        <div class="bgimg-3 w3-display-container w3-opacity-min">
+            <div class="w3-display-middle">
+                <span class="w3-xxlarge w3-text-white w3-wide">Precios de inscripción </span>
+            </div>
+        </div>
+
+
+        <div class="container" style="padding-left: 10%; padding-right: 10%;">
+            <div class="row">
+
+
+                <div class="col-sm-6">
+                    <div class="mega-pricing-item gradient-style-1">
+                        <div class="pricing-icon">
+                            <i class="fa fa-heart-o"></i>
+                        </div>
+                        <h3><strong>Congreso</strong> </h3>
+
+
+                        <ul>
+                            <li><strong>Presencial </strong> L.1000</li>
+                            <li><strong>Virtual </strong> L.1000</li>
+                        </ul>
+                        <h4>Lorem Ipsum is simply dummy text of the printing a</h4>
+
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mega-pricing-item gradient-style-2 active">
+                        <div class="pricing-icon">
+                            <i class="fa fa-plane"></i>
+                        </div>
+                        <h3><strong>Pre congreso</strong></h3>
+
+
+                        <ul>
+                            <li><strong>Presencial </strong> L.1000</li>
+                            <li><strong>Virtual </strong> L.1000</li>
+
+                        </ul>
+                        <h4>Lorem Ipsum is simply dummy text of the printing a</h4>
+
+
+                    </div>
+                </div>
+
+
+
+            </div><!-- ./row -->
+        </div><!-- ./container -->
+        <br>
+        <!-- Footer -->
+        <footer style="background: #1d0d56 ;" class="w3-center  w3-padding-64 ">
+            {{!-- <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the
+                top</a> --}}
+            <div class="w3-xlarge w3-section">
+                <i class="fa fa-facebook-official w3-hover-opacity" style="color: #f1f1f1;"></i>
+                <i class="fa fa-instagram w3-hover-opacity" style="color: #f1f1f1;"></i>
+                <i class="fa fa-snapchat w3-hover-opacity" style="color: #f1f1f1;"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity" style="color: #f1f1f1;"></i>
+                <i class="fa fa-twitter w3-hover-opacity" style="color: #f1f1f1;"></i>
+                <i class="fa fa-linkedin w3-hover-opacity" style="color: #f1f1f1;"></i>
+            </div>
+            {{!-- <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
+                    class="w3-hover-text-green">w3.css</a></p> --}}
+        </footer>
+
+        <script>
+            // Modal Image Gallery
+            function onClick(element) {
+                document.getElementById("img01").src = element.src;
+                document.getElementById("modal01").style.display = "block";
+                var captionText = document.getElementById("caption");
+                captionText.innerHTML = element.alt;
+            }
+
+            // Change style of navbar on scroll
+            window.onscroll = function () { myFunction() };
+            function myFunction() {
+                var navbar = document.getElementById("myNavbar");
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+                } else {
+                    navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+                }
+            }
+
+            // Used to toggle the menu on small screens when clicking on the menu button
+            function toggleFunction() {
+                var x = document.getElementById("navDemo");
+                if (x.className.indexOf("w3-show") == -1) {
+                    x.className += " w3-show";
+                } else {
+                    x.className = x.className.replace(" w3-show", "");
+                }
+            }
+        </script>
+
+    </body>
+
+</html>
+<style>
+    /* demo background */
+    body {
+        background: #fff
+    }
+
+    /* style pricing */
+    .mega-pricing-item {
+        background: #fff none repeat scroll 0 0;
+        box-shadow: 0 0 10px #f1f1f1;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .bordered-btn {
+        border: 1px solid;
+        color: #fff;
+        display: inline-block;
+        font-weight: 700;
+        padding: 10px 30px;
+        text-transform: uppercase;
+    }
+
+    .bordered-btn {
+        border-radius: 3px;
+    }
+
+    .bordered-btn:hover {
+        color: #fff;
+        background-color: #1360f4;
+        border-color: #1360f4;
+        text-decoration: none
+    }
+
+    .boxed-btn {
+        display: inline-block;
+        font-weight: 600;
+        text-transform: uppercase
+    }
+
+    .boxed-btn {
+        border-radius: 2px;
+        font-size: 14px;
+        margin-top: 15px;
+        padding: 10px 30px;
+        color: #fff
+    }
+
+    .boxed-btn:hover {
+        background-color: #333;
+        color: #fff;
+        text-decoration: none
+    }
+
+    .mega-pricing-item ul {
+        line-height: 35px;
+        list-style: outside none none;
+        margin: 0;
+        min-height: 198px;
+        padding: 0;
+    }
+
+    .mega-pricing-item a.boxed-btn {
+        margin: 0;
+    }
+
+    .mega-pricing-item h1 {
+        font-size: 55px;
+        font-weight: 300;
+    }
+
+    .mega-pricing-item h1 span {
+        font-size: 25px;
+        padding-right: 3px;
+    }
+
+    .mega-pricing-item h3 {
+        font-size: 25px;
+        font-weight: 300;
+    }
+
+    .gradient-style-1 {
+        background: #1d0d56;
+        background: -webkit-linear-gradient(45deg, #1d0d56 0%, #a397cf 100%);
+        background: linear-gradient(45deg, #1d0d56 0%, #a397cf 100%);
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#e62f17', endColorstr='#f2ba30', GradientType=1);
+    }
+
+    .gradient-style-2 {
+        background: #0a3466;
+        background: -webkit-linear-gradient(45deg, #0a3466 0%, #17b6e3 100%);
+        background: linear-gradient(45deg, #0a3466 0%, #17b6e3 100%);
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#0a3466', endColorstr='#17b6e3', GradientType=1);
+    }
+
+    .gradient-style-3 {
+        background: #18b9e5;
+        background: -webkit-linear-gradient(45deg, #18b9e5 0%, #81d9b8 100%);
+        background: linear-gradient(45deg, #18b9e5 0%, #81d9b8 100%);
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#18b9e5', endColorstr='#81d9b8', GradientType=1);
+    }
+
+    .gradient-style-1,
+    .gradient-style-2,
+    .gradient-style-3 {
+        color: #fff;
+        box-shadow: 0 0 10px #ccc
+    }
+
+    .pricing-icon {
+        font-size: 80px;
+        line-height: 80px;
+        margin-bottom: 20px;
+    }
+
+    .gradient-style-1 a,
+    .gradient-style-2 a,
+    .gradient-style-3 a {
+        background-color: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+    }
+
+    .pricing-duration {
+        margin-top: -15px;
+        margin-bottom: 15px;
+        font-size: 12px;
+    }
+
+    .mega-pricing-item.flat-style-pricing {
+        border: 1px solid #f7f9fc;
+        box-shadow: 0 0 0;
+    }
+
+    .mega-pricing-item.flat-style-pricing.active {
+        border-top: 3px solid;
+        box-shadow: 0 0 10px #f1f1f1;
+    }
+
+    .mega-pricing-item h3 span {
+        display: block;
+        font-size: 14px;
+        line-height: 20px;
+    }
+</style>

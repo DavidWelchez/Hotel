@@ -1,0 +1,55 @@
+{
+  "name": "comenac",
+  "version": "1.0.0",
+  "description": "COMENAC",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidWelchez/COMENAC.git"
+  },
+  "keywords": [
+    "Node"
+  ],
+  "author": "David",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidWelchez/COMENAC/issues"
+  },
+  "homepage": "https://github.com/DavidWelchez/COMENAC#readme",
+  "dependencies": {
+    "@amcharts/amcharts4": "^4.10.21",
+    "@amcharts/amcharts4-fonts": "^4.0.1",
+    "@amcharts/amcharts4-geodata": "^4.1.21",
+    "amcharts3": "^3.21.15",
+    "bcryptjs": "^2.4.3",
+    "chart.js": "^3.5.0",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "excel4node": "^1.7.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-mysql-session": "^2.1.5",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.12.0",
+    "html-pdf": "^2.2.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "node-msoffice-pdf": "^0.0.7",
+    "nodemailer": "^6.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pdf-creator-node": "^2.2.3",
+    "pdfmake": "^0.1.72",
+    "qrcode": "^1.5.1",
+    "shortid": "^2.2.16",
+    "timeago.js": "^4.0.2",
+    "xlsx-chart": "^0.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

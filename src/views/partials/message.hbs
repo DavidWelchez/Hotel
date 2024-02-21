@@ -1,0 +1,85 @@
+
+
+{{#if success}}
+<div class="container ">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+<div class="alert alert-primary  alert-dismissible fade show" role="alert">
+  <strong>{{success}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+        </div>
+    </div>
+</div>
+{{/if}}
+
+
+{{#if message}}
+<div class="container ">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{message}}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+
+
+{{#if messageErrores}}
+<div class="container ">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+<div class="alert alert-danger  alert-dismissible fade show" role="alert">
+  <strong>{{messageErrores}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+        </div>
+    </div>
+</div>
+
+{{/if}}
+
+
+
+
+
+{{#if messages2}}
+<div class="container ">
+    {{#each messages2}}
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                  {{!-- <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg> --}}
+
+                {{message}}
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+{{/if}}
+
+{{!-- {{#if success2}}
+{{#each message}}
+<div class="container ">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+
+                {{success}}
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+{{/if}} --}}

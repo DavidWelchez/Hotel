@@ -1,0 +1,120 @@
+<div class="container">
+    <br>
+    <div class="row g-3 needs-validation">
+        <div class="col-md-8 mx-auto">
+            <div class="box">
+                <br>
+                <div class="card-body col-md-12">
+                    <h2 style="color: rgb(0, 0, 0);" class="">REGISTRO DE USUARIO</h2>
+                    <hr>
+                    <br>
+                    <form action="/registro" method="POST">
+                        {{!-- ID --}}
+                        <div class="row g-3 needs-validation">
+                            <div class="form-group col-md-6">
+                                <div class="inputBox">
+                                    <input type="text" id="" name="identidad" required>
+                                    <label for="id">Número de Identidad</label>
+                                </div>
+                            </div>
+                            <div class="form-floating form-group col-md-6">
+                                <div class="inputBox">
+                                    <input type="date" id="floatingInput" name="fechaNacimiento">
+                                    <label for="floatingInput">Fecha de nacimiento</label>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- EMAIL --}}
+                        <div class="row g-3 needs-validation">
+                            <div class="form-group col-md-6">
+                                <div class="inputBox">
+                                    <input type="email" id="" name="email" required>
+                                    <label for="email">Correo electrónico</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="inputBox">
+                                    <input type="email" id="" name="confirmEmail" required>
+                                    <label for="">Confirmar correo electrónico</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 needs-validation">
+                            <div class="form-group col-md-6">
+                                <div class="inputBox">
+                                    <input type="password" id="" name="password" required>
+                                    <label for="">Contraseña</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="inputBox">
+                                    <input type="text" id="" name="nombres" required>
+                                    <label for="nombres">Nombres</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 needs-validation">
+                            <div class="form-group col-md-6">
+                                <div class="inputBox">
+                                    <input type="text" id="" name="apellidos" required>
+                                    <label for="">Apellidos</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="inputBox">
+                                    <input type="text" id="" name="telefono" required>
+                                    <label for="telefono">Teléfono</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 needs-validation">
+                            <div class="form-group col-md-6">
+                                <div class="inputBox">
+                                {{!-- <label style="color: #0A1251;" for="validationServer03">País</label> --}}
+                                <select class="form-control form-select" name="pais" id="pais"
+                                    aria-describedby="validationServer04Feedback" required>
+                                    <option selected disabled value="">País</option>
+                                    {{#each paises }}
+                                    <option value="{{id}}" name="id"> {{pais}}</option>
+                                    {{/each}}
+                                </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="inputBox">
+                                    <input type="text" id="ciudad" name="ciudad" required>
+                                    <label for="ciudad">Ciudad</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 needs-validation">
+                            <div class="form-group col-md-6">
+                                {{!-- <label style="color: #0A1251;" for="validationServer03">Perfil</label> --}}
+                                <select class="form-control form-select" name="perfil" id="id"
+                                    aria-describedby="validationServer04Feedback" required>
+                                    <option selected disabled value="">Perfil</option>
+                                    {{#each perfil }}
+                                    <option value="{{id}}" name="id"> {{perfil}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="inputBox">
+                                    <input type="text" id="colegiacion" name="colegiacion">
+                                    <label for="colegiacion">Número colegiación</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card-footer bg-transparent " class="observaciones"> <button
+                                class="btn btn-success ">
+                                Registrarse
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
