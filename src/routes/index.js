@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
             permisoValidador = true;
         }
         try {
-            res.render('index2', {
+            res.render('index', {
            
                 loginAdmin,
                 permisoValidador
@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
        
     } else {
         try {
-            res.render('index2', {
+            res.render('index', {
            
                 
                 
