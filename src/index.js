@@ -62,10 +62,13 @@ app.use('/usuario', require('./routes/usuario'));
 
 
 
-app.use('/inscripcion', require('./routes/inscripcion'));
 
 //RUTAS REGISTRO
 app.use('/registro', require('./routes/registro'));
+app.use('/informacion', require('./routes/informacion'));
+app.use('/habitaciones', require('./routes/habitaciones'));
+
+
 
 
 

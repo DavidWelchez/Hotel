@@ -19,7 +19,8 @@ router.get('/', async (req, res) => {
         }
         try {
             res.render('index', {
-           
+                layout: "index",
+
                 loginAdmin,
                 permisoValidador
                 
@@ -37,7 +38,7 @@ router.get('/', async (req, res) => {
         try {
             res.render('index', {
            
-                
+                layout: "index",
                 
             
               });

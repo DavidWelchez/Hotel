@@ -20,7 +20,7 @@
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
   <link rel="stylesheet" href="/css/styles.css">
-  <link rel="shortcut icon" href="/css/img/Logo-Comenac-2023-Version-Compacta.png" />
+  <link rel="shortcut icon" href="/css/img/logo hotel royal harmony.png" />
   {{!-- SCRIPT PARA SWEET ALERT 2 --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.16/dist/sweetalert2.all.min.js"></script>
   {{!-- FUENTE NOTO --}}
@@ -50,35 +50,35 @@
             <a class="nav-link" href="/">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/inscripcion">Inscripción</a>
+            <a class="nav-link" href="/registro">Habitaciones</a>
           </li>
             
-          <a class="nav-link active" aria-current="page" href="/Stands">Patrocinadores</a>
+          <a class="nav-link active" aria-current="page" href="/informacion">Información</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/hoteles">Hoteles</a>
+            <a class="nav-link" href="/hoteles">Galeria</a>
           </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/tutoriales">Tutoriales</a>
+             <li class="nav-item">
+            <a class="nav-link" href="/tutoriales">Ubicación</a>
           </li>
         
           {{else}}
        
-      <li class="nav-item">
+     <li class="nav-item">
               <li class="nav-item">
             <a class="nav-link" href="/">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/registro">Registro</a>
+            <a class="nav-link" href="/registro">Habitaciones</a>
           </li>
             
-          <a class="nav-link active" aria-current="page" href="/Stands">Patrocinadores</a>
+          <a class="nav-link active" aria-current="page" href="/informacion">Información</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/hoteles">Hoteles</a>
+            <a class="nav-link" href="/hoteles">Galeria</a>
           </li>
              <li class="nav-item">
-            <a class="nav-link" href="/tutoriales">Tutoriales</a>
+            <a class="nav-link" href="/tutoriales">Ubicación</a>
           </li>
           {{/if}}
 
@@ -87,50 +87,7 @@
 
 
 
-          {{!-- <li class="nav-item">
-            <a class="nav-link" href="#">Programa de ventos</a>
-          </li> --}}
-          {{#if loginAdmin}}
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Administracion
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="/Stands/StandsAdmin">Stands</a></li>
-              <li><a class="dropdown-item" href="/hoteles/hotelesAdmin">Hoteles</a></li>
-              <li><a class="dropdown-item" href="/eventos/eventosAdmin">Eventos</a></li>
-              <li><a class="dropdown-item" href="/congresos/congresosAdmin">Congresos</a></li>
-              <li><a class="dropdown-item" href="/inscripcion/inscripcionesAdmin">Inscripciones</a></li>
-              <li><a class="dropdown-item" href="/usuario">usuario</a></li>
-
-            
-            </ul>
-          </li>
-          {{/if}}
-
- {{#if permisoValidador}}
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Inscripciones 
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="/inscripcion/inscripcionesAdminp">Inscripciones presenciales</a></li>
-                              <hr class="dropdown-divider">
-
-              <li><a class="dropdown-item" href="/inscripcion/inscripcionesAdminvirtual">Inscripciones virtuales</a></li>
-
-
-            </ul>
-          </li>
-          {{/if}}
-
-
-        </ul>
-        <span class="navbar-text">
+          
           {{#if user}}
 
 
